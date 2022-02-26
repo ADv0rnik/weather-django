@@ -1,0 +1,36 @@
+{% extends 'weather/base.html' %}
+{% block content %}
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-5 offset-1">
+                    <h1>Get data here</h1>
+                    <form action="{% url 'home' %}", method="post">
+                        {% csrf_token %}
+                        <label for="region_name">Region: </label>
+                        <input id="region_name" type="text" name="region_name" maxlength="100" required
+                               placeholder="Choose your location">
+                        <input type="submit" name="send" value="Download" class="btn btn-secondary mt-2">
+                    </form>
+                </div>
+                <div class="col-4 offset-1">
+                    <h1>Information</h1>
+                    <div class="alert alert-primary" role="alert">
+                        <div class="row">
+                            <div class="col-9">
+                                Recent weather in <b>{{ info.city }}</b><br>
+                                Current temperature: {{ info.temp }}<sup>o</sup><br>
+                                Humidity: {{ info.hum }}<br>
+                                Rain (in mm): {{ info.rain }}<br>
+                            </div>
+                            <div class="col-2 offset-1">
+                                <img src="https://openweathermap.org/img/w/{{ info.icon }}.png" alt="image"
+                                     class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock%}
