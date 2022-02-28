@@ -18,9 +18,7 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-CSRF_TRUSTED_ORIGINS = ['https://freeweather.azurewebsites.net']
-
-
+CSRF_TRUSTED_ORIGINS = ['https://*.azurewebsites.net']
 
 # Application definition
 
